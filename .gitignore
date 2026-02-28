@@ -16,11 +16,6 @@ Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/result/test_prediction/
 Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/result/visualizations/
 
 # =========================
-# Ignore environment setup
-# =========================
-Project/Offroad_Segmentation_Scripts/ENV_SETUP/
-
-# =========================
 # (Optional) Common Python ignores
 # =========================
 __pycache__/
