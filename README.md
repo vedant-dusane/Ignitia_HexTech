@@ -100,7 +100,7 @@ Team Members:
 
 8. Final Training Statistics
 		EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
-		8.1 Final Numerical Results
+	8.1 Final Numerical Results
    
 		============================================================
 		FINAL TRAINING SUMMARY (EfficientNet‑B4 – Epoch 25/25)
@@ -115,7 +115,7 @@ Team Members:
 		Best Epoch:              ______
 		============================================================
 
-8.2 Generated Performance Curves
+	8.2 Generated Performance Curves
 		All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 		
 		Training vs Validation Loss Curve
@@ -135,13 +135,13 @@ Team Members:
 		Tracks pixel‑wise prediction accuracy throughout training
 
 		
-8.3 Interpretation
+	8.3 Interpretation
 		IoU is the principal segmentation performance metric.
 		Dice reflects overlap quality between predicted and ground truth masks.
 		Loss curves confirm stable optimization behavior.
 		Accuracy provides complementary pixel‑level insight.
 		The final deployed model corresponds to the highest validation IoU achieved by EfficientNet‑B4 during training.
-		
+
 9. Conclusion
 		Team HexTech implemented a structured DeepLabV3+ segmentation pipeline centered on EfficientNet‑B4 as the encoder backbone.
 		The model demonstrated:
