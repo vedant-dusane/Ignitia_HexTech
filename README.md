@@ -149,38 +149,46 @@ This script:
     
 	8.1 Final Numerical Results
    
-		============================================================
-		FINAL TRAINING SUMMARY (EfficientNet‑B4 – Epoch 25/25)
-		============================================================
-		Final Train Loss:        ______
-		Final Validation Loss:   ______
-		Final Validation IoU:    ______
-		Final Validation Dice:   ______
-		Final Validation Acc:    ______
+		TRAINING RESULTS
+		==================================================
 		
-		Best IoU Achieved:       ______
-		Best Epoch:              ______
-		============================================================
+		Final Metrics:
+		  Final Train Loss:     0.2793
+		  Final Val Loss:       0.2637
+		  Final Train IoU:      0.5953
+		  Final Val IoU:        0.5297
+		  Final Train Dice:     0.7196
+		  Final Val Dice:       0.7053
+		  Final Train Accuracy: 0.8604
+		  Final Val Accuracy:   0.8621
+		==================================================
+		
+		Best Results:
+		  Best Val IoU:      0.5300 (Epoch 24)
+		  Best Val Dice:     0.7062 (Epoch 24)
+		  Best Val Accuracy: 0.8621 (Epoch 25)
+		  Lowest Val Loss:   0.2637 (Epoch 25)
+		==================================================
 
 	8.2 Generated Performance Curves
     
 	All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 		
-		1.Training vs Validation Loss Curve
-		![Loss Curve](result/train_stats/loss_curve.png)
-		Demonstrates convergence stability and generalization behavior of EfficientNet‑B4.
+		1.All Metrics Curves 
+		<img width="1200" height="1000" alt="image" src="https://github.com/user-attachments/assets/c2559795-e61c-40b5-8c1d-acf8304d4e99" />
+		The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
 		
-		2.Validation IoU Curve
-		![IoU Curve](result/train_stats/iou_curve.png)
-		Primary performance curve used for selecting the best EfficientNet‑B4 checkpoint.
+		2.Dice Curves
+		<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/27953f6b-b9ca-4c6d-8b1f-a320dd94c68b" />
+    	This shows the steady upward trend in validation Dice indicates improved overlap quality between predicted masks and ground truth. The small gap between train and validation curves suggests controlled overfitting and good generalization.
 		
-		3.Validation Dice Curve
-		![Dice Curve](result/train_stats/dice_curve.png)
-		Reflects segmentation overlap consistency across epochs.
+		3.IoU Curve
+		<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/a4a94813-97cf-436b-9e2a-5d922b46fc38" />
+		The consistent improvement in validation IoU confirms effective feature learning. The moderate gap between train and validation IoU is expected in segmentation tasks and does not indicate instability.
 		
-		4.Validation Accuracy Curve
-		![Accuracy Curve](result/train_stats/accuracy_curve.png)
-		Tracks pixel‑wise prediction accuracy throughout training
+		4.Training Curve
+		<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/9192f72a-061a-4f43-b922-6f7d412c4f2f" />
+		Shows the model exhibits stable convergence behavior, smooth optimization dynamics, and no signs of training collapse or erratic learning rate behavior.
 
 		
 	8.3 Interpretation
