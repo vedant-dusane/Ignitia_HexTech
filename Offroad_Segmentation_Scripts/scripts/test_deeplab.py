@@ -31,13 +31,13 @@ print(f"Using device: {device}")
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Path to saved model
-project_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
+project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
 experiment_root = os.path.abspath(os.path.join(script_dir, ".."))
 model_path = os.path.join(experiment_root,"models","segmentation_head.pth")
 
 # Path to test images
 test_dir = os.path.join(project_root,"Offroad_Segmentation_testImages")
-image_dir = os.path.join(test_dir, "Color_Images")  
+image_dir = os.path.join(project_root, "Offroad_Segmentation_testImages", "Color_Images")
 
 # Where predictions will be saved
 results_dir = os.path.join(experiment_root, "result")
