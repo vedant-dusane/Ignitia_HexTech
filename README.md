@@ -174,26 +174,22 @@ This script:
     
 	All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 		
-		1.All Metrics Curves
-    
-	<img width="1200" height="1000" alt="all_metrics_curves" src="https://github.com/user-attachments/assets/af4ec89f-f0a3-4f7b-8655-34a5e97f3f1b" />
+	1.All Metrics Curves
+    <img width="1200" height="1000" alt="all_metrics_curves" src="https://github.com/user-attachments/assets/af4ec89f-f0a3-4f7b-8655-34a5e97f3f1b" />
+	The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
 
-		The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
 		
-		2.Dice Curves
+	2.Dice Curves
 	<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/27953f6b-b9ca-4c6d-8b1f-a320dd94c68b" />
-
-    	This shows the steady upward trend in validation Dice indicates improved overlap quality between predicted masks and ground truth. The small gap between train and validation curves suggests controlled overfitting and good generalization.
+   	This shows the steady upward trend in validation Dice indicates improved overlap quality between predicted masks and ground truth. The small gap between train and validation curves suggests controlled overfitting and good generalization.
 		
-		3.IoU Curve
+	3.IoU Curve
 	<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/a4a94813-97cf-436b-9e2a-5d922b46fc38" />
+	The consistent improvement in validation IoU confirms effective feature learning. The moderate gap between train and validation IoU is expected in segmentation tasks and does not indicate instability.
 		
-		The consistent improvement in validation IoU confirms effective feature learning. The moderate gap between train and validation IoU is expected in segmentation tasks and does not indicate instability.
-		
-		4.Training Curve
+	4.Training Curve
 	<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/9192f72a-061a-4f43-b922-6f7d412c4f2f" />
-		
-		Shows the model exhibits stable convergence behavior, smooth optimization dynamics, and no signs of training collapse or erratic learning rate behavior.
+	Shows the model exhibits stable convergence behavior, smooth optimization dynamics, and no signs of training collapse or erratic learning rate behavior.
 
 		
 	8.3 Interpretation
