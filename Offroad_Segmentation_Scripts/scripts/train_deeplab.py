@@ -1,5 +1,5 @@
 """
-Trains efficientnet-b4 for semantic segmentation 
+Trains efficientnet-b4 for semantic segmentation
 """
 
 import os
@@ -25,7 +25,6 @@ from albumentations.pytorch import ToTensorV2
 # Set matplotlib to non-interactive backend
 plt.switch_backend('Agg')
 
-
 # ============================================================================
 # Utility Functions
 # ============================================================================
@@ -38,7 +37,6 @@ def save_image(img, filename):
     img = np.moveaxis(img, 0, -1)
     img = (img * std + mean) * 255
     cv2.imwrite(filename, img[:, :, ::-1])
-
 
 # ============================================================================
 # Mask Conversion
@@ -59,7 +57,6 @@ value_map = {
 }
 n_classes = len(value_map)
 
-
 def convert_mask(mask):
     """Convert raw mask values to class IDs."""
     arr = np.array(mask)
@@ -67,7 +64,6 @@ def convert_mask(mask):
     for raw_value, new_value in value_map.items():
         new_arr[arr == raw_value] = new_value
     return Image.fromarray(new_arr)
-
 
 # ============================================================================
 # Dataset
@@ -107,8 +103,6 @@ class MaskDataset(Dataset):
 
         return image, mask
 
-
-
 # ============================================================================
 # Metrics
 # ============================================================================
@@ -136,7 +130,6 @@ def compute_iou(pred, target, num_classes=10, ignore_index=255):
 
     return np.nanmean(iou_per_class)
 
-
 def compute_dice(pred, target, num_classes=10, smooth=1e-6):
     """Compute Dice coefficient (F1 Score) per class and return mean Dice Score."""
     pred = torch.argmax(pred, dim=1)
@@ -154,12 +147,10 @@ def compute_dice(pred, target, num_classes=10, smooth=1e-6):
 
     return np.mean(dice_per_class)
 
-
 def compute_pixel_accuracy(pred, target):
     """Compute pixel accuracy."""
     pred_classes = torch.argmax(pred, dim=1)
     return (pred_classes == target).float().mean().cpu().numpy()
-
 
 def evaluate_metrics(model, data_loader, device, num_classes=10, show_progress=True):
     """Evaluate all metrics on a dataset."""
@@ -188,7 +179,6 @@ def evaluate_metrics(model, data_loader, device, num_classes=10, show_progress=T
     model.train()
     return np.mean(iou_scores), np.mean(dice_scores), np.mean(pixel_accuracies)
 
-
 # ============================================================================
 # Plotting Functions
 # ============================================================================
@@ -199,7 +189,7 @@ def save_training_plots(history, output_dir):
 
     # Plot 1: Loss curves
     plt.figure(figsize=(12, 5))
-    
+   
     plt.subplot(1, 2, 1)
     plt.plot(history['train_loss'], label='train')
     plt.plot(history['val_loss'], label='val')
@@ -208,7 +198,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('Loss')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.subplot(1, 2, 2)
     plt.plot(history['train_pixel_acc'], label='train')
     plt.plot(history['val_pixel_acc'], label='val')
@@ -217,7 +207,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('Accuracy')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'training_curves.png'))
     plt.close()
@@ -225,7 +215,7 @@ def save_training_plots(history, output_dir):
 
     # Plot 2: IoU curves
     plt.figure(figsize=(12, 5))
-    
+   
     plt.subplot(1, 2, 1)
     plt.plot(history['train_iou'], label='Train IoU')
     plt.title('Train IoU vs Epoch')
@@ -233,7 +223,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('IoU')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.subplot(1, 2, 2)
     plt.plot(history['val_iou'], label='Val IoU')
     plt.title('Validation IoU vs Epoch')
@@ -241,7 +231,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('IoU')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'iou_curves.png'))
     plt.close()
@@ -249,7 +239,7 @@ def save_training_plots(history, output_dir):
 
     # Plot 3: Dice curves
     plt.figure(figsize=(12, 5))
-    
+   
     plt.subplot(1, 2, 1)
     plt.plot(history['train_dice'], label='Train Dice')
     plt.title('Train Dice vs Epoch')
@@ -257,7 +247,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('Dice Score')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.subplot(1, 2, 2)
     plt.plot(history['val_dice'], label='Val Dice')
     plt.title('Validation Dice vs Epoch')
@@ -265,7 +255,7 @@ def save_training_plots(history, output_dir):
     plt.ylabel('Dice Score')
     plt.legend()
     plt.grid(True)
-    
+   
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'dice_curves.png'))
     plt.close()
@@ -314,7 +304,6 @@ def save_training_plots(history, output_dir):
     plt.savefig(os.path.join(output_dir, 'all_metrics_curves.png'))
     plt.close()
     print(f"Saved combined metrics curves to '{output_dir}/all_metrics_curves.png'")
-
 
 def save_history_to_file(history, output_dir):
     """Save training history to a text file."""
@@ -366,7 +355,6 @@ def save_history_to_file(history, output_dir):
 
     print(f"Saved evaluation metrics to {filepath}")
 
-
 # ============================================================================
 # Main Training Function
 # ============================================================================
@@ -381,13 +369,13 @@ def main():
     # Hyperparameters
     batch_size = 4
     w = 512
-    h = 512 
+    h = 512
     lr = 1.5e-4
     n_epochs = 15
 
     # Output directory (relative to script location)
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.abspath(os.path.join(script_dir, "..","..",".."))
+    project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
 
     experiment_root = os.path.abspath(os.path.join(script_dir, ".."))
 
@@ -460,7 +448,7 @@ def main():
         classes=n_classes,
         ).to(device)
     model = model.to(memory_format=torch.channels_last)
-    
+   
     scaler = torch.amp.GradScaler("cuda", enabled=(device.type == "cuda"))
 
     print("DeepLabV3+ EfficientNet-B4 loaded.")
@@ -507,43 +495,41 @@ def main():
         'val_pixel_acc': []
     }
 
-
     resume_path = os.path.join(models_dir, "segmentation_head.pth")
 
     start_epoch = 0
 
     if os.path.exists(resume_path):
         print("🔁 Resuming from checkpoint...")
+
         checkpoint = torch.load(resume_path, map_location=device)
 
-        # Case 1: Full checkpoint dictionary
+        # CASE 1: Full training checkpoint
         if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
             print("Loading full checkpoint dictionary...")
+
             model.load_state_dict(checkpoint["model_state_dict"])
 
             if "optimizer_state_dict" in checkpoint:
                 optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+                print("Optimizer state loaded.")
 
             if "scheduler_state_dict" in checkpoint:
                 scheduler.load_state_dict(checkpoint["scheduler_state_dict"])
+                print("Scheduler state loaded.")
 
             start_epoch = checkpoint.get("epoch", 0) + 1
             best_val_iou = checkpoint.get("best_val_iou", 0)
 
-        # Case 2: Only model state_dict saved
+        # CASE 2: Raw model weights only
         else:
-            print("Loading raw model state_dict...")
+            print("Loading raw model state_dict (no optimizer/scheduler)...")
+
             model.load_state_dict(checkpoint)
+
+            # Fresh optimizer + scheduler
             start_epoch = 0
             best_val_iou = 0
-
-        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-
-        if "scheduler_state_dict" in checkpoint:
-            scheduler.load_state_dict(checkpoint["scheduler_state_dict"])
-
-        start_epoch = checkpoint["epoch"] + 1
-        best_val_iou = checkpoint["best_val_iou"]
 
         print(f"Resumed from epoch {start_epoch}")
         print(f"Best IoU so far: {best_val_iou:.4f}")
@@ -573,7 +559,7 @@ def main():
         model.train()
         train_losses = []
 
-        train_pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{n_epochs} [Train]", 
+        train_pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{n_epochs} [Train]",
                           leave=False, unit="batch")
         for batch_idx, (imgs, labels) in enumerate(train_pbar):
             imgs = imgs.to(device, non_blocking=True)
@@ -602,7 +588,7 @@ def main():
         val_losses = []
 
         val_pbar = tqdm(val_loader, desc=f"Epoch {epoch+1}/{n_epochs} [Val]",leave=False, unit="batch")
-        
+       
         val_iou_scores = []
         val_dice_scores = []
         val_pixel_accs = []
@@ -659,7 +645,6 @@ def main():
         history['train_pixel_acc'].append(train_pixel_acc)
         history['val_pixel_acc'].append(val_pixel_acc)
 
-
         print(f"\nEpoch {epoch+1} Summary:")
         print(f"  Train Loss: {epoch_train_loss:.4f}")
         print(f"  Val Loss:   {epoch_val_loss:.4f}")
@@ -678,7 +663,7 @@ def main():
         if val_iou > best_val_iou:
             best_val_iou = val_iou
             best_model_path = os.path.join(models_dir, "segmentation_head.pth")
-            
+           
             torch.save({
                 "epoch": epoch,
                 "model_state_dict": model.state_dict(),
@@ -703,7 +688,5 @@ def main():
 
     print("\nTraining complete!")
 
-
 if __name__ == "__main__":
     main()
-
