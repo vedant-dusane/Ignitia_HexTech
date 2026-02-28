@@ -8,6 +8,8 @@ Our solution is centered around:DeepLabV3+ with EfficientNet‑B4 as the encoder
 
 The primary architectural emphasis of this project is the integration of EfficientNet‑B4 to enhance feature extraction quality while maintaining parameter efficiency. The objective was to achieve stable convergence, strong generalization, and competitive Intersection over Union (IoU) performance within constrained training time.The pipeline is modular, reproducible, and structured for clean experimentation.
 
+
+
 2.Dataset Acquisition
 
 The official dataset can be downloaded from: https://falcon.duality.ai/secure/documentation/hackathon-segmentation-desert?utm_source=hackathon&utm_medium=instructions&utm_campaign=Ignitia
@@ -16,6 +18,8 @@ After downloading:
 
  1.Extract the Training Dataset
  2.Extract the Testing Dataset
+
+
 
 3.Required Directory Structure After extraction, the directory must be structured as follows:
 
@@ -52,6 +56,8 @@ After downloading:
 	└── .gitignore
 The dataset directories must be placed alongside Offroad_Segmentation_Scripts inside the Project folder. Incorrect placement will prevent the EfficientNet‑B4 training pipeline from locating the data.
 
+
+
 4.Training Procedure
 
 Navigate to: /Offroad_Segmentation_Scripts/scripts
@@ -74,11 +80,15 @@ This script:
 		
 		7.Stores qualitative segmentation outputs
 
+
+
 5.Testing Procedure
 
 After training: python test_deeplab.py
 
 This loads the best EfficientNet‑B4 checkpoint and performs inference on test images. Predictions are stored in: result/test_prediction
+
+
 
 6.Architecture: DeepLabV3+ with EfficientNet‑B4
 
@@ -109,6 +119,8 @@ The DeepLabV3+ framework complements EfficientNet‑B4 through:
 	 3.Boundary refinement via decoder upsampling
 This combination allows EfficientNet‑B4 features to be leveraged effectively for dense pixel‑wise prediction.
 
+
+
 7.Training Methodology
 
 The EfficientNet‑B4 pipeline incorporates several performance‑oriented engineering decisions to maximize segmentation accuracy and convergence stability:
@@ -131,6 +143,8 @@ The EfficientNet‑B4 pipeline incorporates several performance‑oriented engin
 	
 	 9.Automated Metric Logging & Visualization: Generates loss and metric curves for transparent monitoring of convergence behavior.
 	Final Training Statistics
+
+
 
 8.EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
 
@@ -184,6 +198,8 @@ All graphs are automatically generated during EfficientNet‑B4 training and sto
 	4.Accuracy provides complementary pixel‑level insight.
 
 	5.The final deployed model corresponds to the highest validation IoU achieved by EfficientNet‑B4 during training.
+
+
 
 9.Conclusion
 
