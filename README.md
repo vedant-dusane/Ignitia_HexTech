@@ -7,6 +7,7 @@ Team Members:
 	Saqlain Abidi
 
 1. Project Overview
+   
 	This project presents a semantic segmentation framework for offroad desert terrain, developed for the Ignitia Hackathon.
 	
 	Our solution is centered around:DeepLabV3+ with EfficientNet‑B4 as the encoder backbone.
@@ -14,12 +15,17 @@ Team Members:
 	The primary architectural emphasis of this project is the integration of EfficientNet‑B4 to enhance feature extraction quality while maintaining parameter efficiency. The objective was to achieve stable convergence, strong generalization, and competitive Intersection over Union (IoU) performance within constrained training time.The pipeline is modular, reproducible, and structured for clean experimentation.
 
 3. Dataset Acquisition
+	
 	The official dataset can be downloaded from: https://falcon.duality.ai/secure/documentation/hackathon-segmentation-desert?utm_source=hackathon&utm_medium=instructions&utm_campaign=Ignitia
+	
 	After downloading:
-		Extract the Training Dataset
-		Extract the Testing Dataset
 
-4. Required Directory Structure
+	Extract the Training Dataset
+		
+	Extract the Testing Dataset
+
+
+5. Required Directory Structure
 		After extraction, the directory must be structured as follows:
 
 		IGNITIA_HEXTECH
@@ -54,64 +60,77 @@ Team Members:
 				├── README.md
 				├── .gitignore
 
+	
 	The dataset directories must be placed alongside Offroad_Segmentation_Scripts inside the Project folder. Incorrect placement will prevent the EfficientNet‑B4 training pipeline from locating the data.
 
-5. Training Procedure
-		Navigate to: Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/scripts
-		Run: python train_deeplab.py
-			This script:
-					Initializes DeepLabV3+ with EfficientNet‑B4 encoder
-					Loads training and validation datasets
-					Trains for 25 epochs
-					Monitors IoU, Dice, Accuracy, and Loss
-					Saves the best EfficientNet‑B4 checkpoint (based on Validation IoU)
-					Generates performance graphs
-					Stores qualitative segmentation outputs
+6. Training Procedure
+
+Navigate to: Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/scripts
+		
+Run: python train_deeplab.py
+			
+This script:
+			
+			Initializes DeepLabV3+ with EfficientNet‑B4 encoder
+			Loads training and validation datasets
+			Trains for 25 epochs
+			Monitors IoU, Dice, Accuracy, and Loss
+			Saves the best EfficientNet‑B4 checkpoint (based on Validation IoU)
+			Generates performance graphs
+			Stores qualitative segmentation outputs
 
 5. Testing Procedure
+	
 	After training: python test_deeplab.py
-		This loads the best EfficientNet‑B4 checkpoint and performs inference on test images. Predictions are stored in: result/test_prediction
+	
+	This loads the best EfficientNet‑B4 checkpoint and performs inference on test images. Predictions are stored in: result/test_prediction
 		
 6. Architecture: DeepLabV3+ with EfficientNet‑B4
-		6.1 EfficientNet‑B4 as Encoder Backbone
-				EfficientNet‑B4 forms the core of our model architecture.
-				Key properties:
-   				Compound scaling of depth, width, and resolution
-					Strong multi‑scale feature representation
-					High representational efficiency
-					Improved feature richness compared to lightweight encoders
-					Its hierarchical structure enables robust extraction of desert terrain features such as texture variation, boundary transitions, and region consistency.
-		6.2 DeepLabV3+ Decoder
-				The DeepLabV3+ framework complements EfficientNet‑B4 through:
-					Atrous Spatial Pyramid Pooling (ASPP)
-					Multi‑scale context aggregation
-					Boundary refinement via decoder upsampling
-					This combination allows EfficientNet‑B4 features to be leveraged effectively for dense pixel‑wise prediction.
+   
+	6.1 EfficientNet‑B4 as Encoder Backbone
 
-7. Training Methodology
+   EfficientNet‑B4 forms the core of our model architecture.
+
+   Key properties:
+
+	   Compound scaling of depth, width, and resolution
+	
+	   Strong multi‑scale feature representation
+	
+	   High representational efficiency
+	
+	   Improved feature richness compared to lightweight encoders
+	
+	   Its hierarchical structure enables robust extraction of desert terrain features such as texture variation, boundary transitions, and region consistency.
+
+   6.2 DeepLabV3+ Decoder
+	
+	The DeepLabV3+ framework complements EfficientNet‑B4 through:
+
+  		Atrous Spatial Pyramid Pooling (ASPP)
+		Multi‑scale context aggregation
+		Boundary refinement via decoder upsampling
+		This combination allows EfficientNet‑B4 features to be leveraged effectively for dense pixel‑wise prediction.
+
+8. Training Methodology
+   
 	The EfficientNet‑B4 pipeline incorporates several performance‑oriented engineering decisions to maximize segmentation accuracy and convergence stability:
 	
-	Hybrid Dice + Focal Loss
-		Combines overlap optimization (Dice) with hard‑example emphasis (Focal) to handle class imbalance and improve boundary precision.
-	Mixed Precision Training (AMP)
-		Reduces memory usage and increases training throughput without compromising numerical stability.
-	AdamW Optimizer
-		Decouples weight decay from gradient updates, improving generalization and convergence behavior.
-	Cosine Annealing Warm Restarts Scheduler
-		Periodically resets the learning rate to escape shallow minima and encourage smoother convergence.
-	Channels‑Last Memory Format
-		Optimizes tensor layout for improved GPU throughput and memory efficiency.
-	Gradient Clipping
-		Prevents exploding gradients and stabilizes training during early epochs.
-	Validation‑Driven Checkpointing
-		Saves the model strictly based on highest validation IoU to ensure optimal generalization performance.
-	Test‑Time Augmentation (Flip Averaging)
-		Improves inference robustness by averaging predictions across transformed inputs.
-	Automated Metric Logging & Visualization
-		Generates loss and metric curves for transparent monitoring of convergence behavior.
 
-9. Final Training Statistics
-		EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
+		Hybrid Dice + Focal Loss: Combines overlap optimization (Dice) with hard‑example emphasis (Focal) to handle class imbalance and improve boundary precision.
+		Mixed Precision Training (AMP): Reduces memory usage and increases training throughput without compromising numerical stability.
+		AdamW Optimizer: Decouples weight decay from gradient updates, improving generalization and convergence behavior.
+		Cosine Annealing Warm Restarts Scheduler: Periodically resets the learning rate to escape shallow minima and encourage smoother convergence.
+		Channels‑Last Memory Format: Optimizes tensor layout for improved GPU throughput and memory efficiency.
+		Gradient Clipping: Prevents exploding gradients and stabilizes training during early epochs.
+		Validation‑Driven Checkpointing: Saves the model strictly based on highest validation IoU to ensure optimal generalization performance.
+		Test‑Time Augmentation (Flip Averaging): Improves inference robustness by averaging predictions across transformed inputs.
+		Automated Metric Logging & Visualization: Generates loss and metric curves for transparent monitoring of convergence behavior.
+
+10. Final Training Statistics
+
+    EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
+    
 	8.1 Final Numerical Results
    
 		============================================================
@@ -128,7 +147,8 @@ Team Members:
 		============================================================
 
 	8.2 Generated Performance Curves
-		All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
+    
+	All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 		
 		Training vs Validation Loss Curve
 		![Loss Curve](result/train_stats/loss_curve.png)
@@ -148,20 +168,25 @@ Team Members:
 
 		
 	8.3 Interpretation
+    
 		IoU is the principal segmentation performance metric.
 		Dice reflects overlap quality between predicted and ground truth masks.
 		Loss curves confirm stable optimization behavior.
 		Accuracy provides complementary pixel‑level insight.
 		The final deployed model corresponds to the highest validation IoU achieved by EfficientNet‑B4 during training.
 
-10. Conclusion
-		Team HexTech implemented a structured DeepLabV3+ segmentation pipeline centered on EfficientNet‑B4 as the encoder backbone.
-		The model demonstrated:
-			Stable and consistent convergence
-			Progressive validation IoU improvement
-			Strong qualitative segmentation outputs
-			Reliable terrain feature discrimination
-			EfficientNet‑B4 proved effective in capturing complex desert terrain patterns while maintaining training stability under hackathon constraints.
+12. Conclusion
+    
+	Team HexTech implemented a structured DeepLabV3+ segmentation pipeline centered on EfficientNet‑B4 as the encoder backbone.
+	
+	The model demonstrated:
+
+		Stable and consistent convergence
+		Progressive validation IoU improvement
+		Strong qualitative segmentation outputs
+		Reliable terrain feature discrimination
+
+	EfficientNet‑B4 proved effective in capturing complex desert terrain patterns while maintaining training stability under hackathon constraints.
 
 Team HexTech
 Ignitia Hackathon Submission
