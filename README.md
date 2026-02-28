@@ -110,7 +110,7 @@ Team Members:
 	Automated Metric Logging & Visualization
 		Generates loss and metric curves for transparent monitoring of convergence behavior.
 
-8. Final Training Statistics
+9. Final Training Statistics
 		EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
 	8.1 Final Numerical Results
    
@@ -154,7 +154,7 @@ Team Members:
 		Accuracy provides complementary pixel‑level insight.
 		The final deployed model corresponds to the highest validation IoU achieved by EfficientNet‑B4 during training.
 
-9. Conclusion
+10. Conclusion
 		Team HexTech implemented a structured DeepLabV3+ segmentation pipeline centered on EfficientNet‑B4 as the encoder backbone.
 		The model demonstrated:
 			Stable and consistent convergence
