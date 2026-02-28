@@ -74,7 +74,7 @@ This script:
 			
 			2.Loads training and validation datasets
 			
-			3.Trains for 25 epochs
+			3.Trains for said number of epochs
 			
 			4.Monitors IoU, Dice, Accuracy, and Loss
 			
