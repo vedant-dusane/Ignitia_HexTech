@@ -174,8 +174,10 @@ This script:
     
 	All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 		
-		1.All Metrics Curves 
-		<img width="1200" height="1000" alt="image" src="https://github.com/user-attachments/assets/c2559795-e61c-40b5-8c1d-acf8304d4e99" />
+		1.All Metrics Curves
+    
+		<img width="1200" height="1000" alt="all_metrics_curves" src="https://github.com/user-attachments/assets/af4ec89f-f0a3-4f7b-8655-34a5e97f3f1b" />
+
 		The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
 		
 		2.Dice Curves
