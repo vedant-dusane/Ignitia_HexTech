@@ -149,7 +149,7 @@ This script:
     
 	8.1 Final Numerical Results
    
-		TRAINING RESULTS
+		TRAINING RESULTS (Epoch 25/25)
 		==================================================
 		
 		Final Metrics:
