@@ -160,13 +160,18 @@ The EfficientNet‑B4 pipeline incorporates several performance‑oriented engin
 
 All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
 
-	1.All Metrics Curves all_metrics_curves The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
+1.All Metrics Curves all_metrics_curves The model demonstrates stable convergence, gradual performance improvement, and strong generalization with minimal overfitting.
+<img width="1200" height="1000" alt="all_metrics_curves" src="https://github.com/user-attachments/assets/6903638d-df80-416d-8149-9b9f6fc1af7f" />
+
+2.Dice Curves image This shows the steady upward trend in validation Dice indicates improved overlap quality between predicted masks and ground truth. The small gap between train and validation curves suggests controlled overfitting and good generalization.
+<img width="1200" height="500" alt="dice_curves" src="https://github.com/user-attachments/assets/cb01f3bb-f04b-44c8-a1e2-b482f91942b8" />
 	
-	2.Dice Curves image This shows the steady upward trend in validation Dice indicates improved overlap quality between predicted masks and ground truth. The small gap between train and validation curves suggests controlled overfitting and good generalization.
+3.IoU Curve image The consistent improvement in validation IoU confirms effective feature learning. The moderate gap between train and validation IoU is expected in segmentation tasks and does not indicate instability.
+<img width="1200" height="500" alt="iou_curves" src="https://github.com/user-attachments/assets/7f9cc1b3-8fc4-4868-9b84-61821d3cc87d" />
 	
-	3.IoU Curve image The consistent improvement in validation IoU confirms effective feature learning. The moderate gap between train and validation IoU is expected in segmentation tasks and does not indicate instability.
-	
-	4.Training Curve image Shows the model exhibits stable convergence behavior, smooth optimization dynamics, and no signs of training collapse or erratic learning rate behavior.
+4.Training Curve image Shows the model exhibits stable convergence behavior, smooth optimization dynamics, and no signs of training collapse or erratic learning rate behavior.
+<img width="1200" height="500" alt="training_curves" src="https://github.com/user-attachments/assets/c3c44002-0ce0-46f8-8fb8-464568f1a554" />
+
 
 8.3 Interpretation
 
