@@ -21,7 +21,8 @@ Team Members:
 
 3. Required Directory Structure
 		After extraction, the directory must be structured as follows:
-		IGNITIA_HEXTECH
+
+IGNITIA_HEXTECH
 		│
 		├── organiser_files/
 		│
