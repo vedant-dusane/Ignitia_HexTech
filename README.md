@@ -1,4 +1,4 @@
-Team HexTech (Ignitia Hackathon – Offroad Desert Segmentation Challenge) Team Members: Vedant Dusane Arnav Kumar Saqlain Abidi
+#Team HexTech (Ignitia Hackathon – Offroad Desert Segmentation Challenge) Team Members: Vedant Dusane Arnav Kumar Saqlain Abidi
 
 1.Project Overview
 
