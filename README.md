@@ -89,14 +89,26 @@ Team Members:
 					This combination allows EfficientNet‑B4 features to be leveraged effectively for dense pixel‑wise prediction.
 
 7. Training Methodology
-		The training pipeline was designed specifically to maximize EfficientNet‑B4 performance:
-				Supervised pixel‑wise segmentation
-				Cross‑entropy based optimization
-				Validation‑driven checkpointing
-				IoU as the primary selection metric
-				Dice coefficient as secondary overlap metric
-				Monitoring convergence stability through loss curves
-				Model selection strictly relied on the highest validation IoU achieved during the 25‑epoch run.
+	The EfficientNet‑B4 pipeline incorporates several performance‑oriented engineering decisions to maximize segmentation accuracy and convergence stability:
+	
+	Hybrid Dice + Focal Loss
+		Combines overlap optimization (Dice) with hard‑example emphasis (Focal) to handle class imbalance and improve boundary precision.
+	Mixed Precision Training (AMP)
+		Reduces memory usage and increases training throughput without compromising numerical stability.
+	AdamW Optimizer
+		Decouples weight decay from gradient updates, improving generalization and convergence behavior.
+	Cosine Annealing Warm Restarts Scheduler
+		Periodically resets the learning rate to escape shallow minima and encourage smoother convergence.
+	Channels‑Last Memory Format
+		Optimizes tensor layout for improved GPU throughput and memory efficiency.
+	Gradient Clipping
+		Prevents exploding gradients and stabilizes training during early epochs.
+	Validation‑Driven Checkpointing
+		Saves the model strictly based on highest validation IoU to ensure optimal generalization performance.
+	Test‑Time Augmentation (Flip Averaging)
+		Improves inference robustness by averaging predictions across transformed inputs.
+	Automated Metric Logging & Visualization
+		Generates loss and metric curves for transparent monitoring of convergence behavior.
 
 8. Final Training Statistics
 		EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
