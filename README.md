@@ -101,40 +101,41 @@ Team Members:
 8. Final Training Statistics
 		EfficientNet‑B4 – 25 Epoch Run. After full training completion, the final EfficientNet‑B4 model statistics are summarized below.
 		8.1 Final Numerical Results
-============================================================
-FINAL TRAINING SUMMARY (EfficientNet‑B4 – Epoch 25/25)
-============================================================
-
-Final Train Loss:        ______
-Final Validation Loss:   ______
-Final Validation IoU:    ______
-Final Validation Dice:   ______
-Final Validation Acc:    ______
-
-Best IoU Achieved:       ______
-Best Epoch:              ______
-============================================================
+   
+		============================================================
+		FINAL TRAINING SUMMARY (EfficientNet‑B4 – Epoch 25/25)
+		============================================================
+		Final Train Loss:        ______
+		Final Validation Loss:   ______
+		Final Validation IoU:    ______
+		Final Validation Dice:   ______
+		Final Validation Acc:    ______
+		
+		Best IoU Achieved:       ______
+		Best Epoch:              ______
+		============================================================
 
 8.2 Generated Performance Curves
 		All graphs are automatically generated during EfficientNet‑B4 training and stored in: result/train_stats/
-		.
+		
 		Training vs Validation Loss Curve
 		![Loss Curve](result/train_stats/loss_curve.png)
 		Demonstrates convergence stability and generalization behavior of EfficientNet‑B4.
-		.
+		
 		Validation IoU Curve
 		![IoU Curve](result/train_stats/iou_curve.png)
 		Primary performance curve used for selecting the best EfficientNet‑B4 checkpoint.
-		.
+		
 		Validation Dice Curve
 		![Dice Curve](result/train_stats/dice_curve.png)
 		Reflects segmentation overlap consistency across epochs.
-		.
+		
 		Validation Accuracy Curve
 		![Accuracy Curve](result/train_stats/accuracy_curve.png)
 		Tracks pixel‑wise prediction accuracy throughout training
-		.
-	8.3 Interpretation
+
+		
+8.3 Interpretation
 		IoU is the principal segmentation performance metric.
 		Dice reflects overlap quality between predicted and ground truth masks.
 		Loss curves confirm stable optimization behavior.
