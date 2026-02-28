@@ -452,7 +452,7 @@ def main():
     print(f"Training samples: {len(trainset)}")
     print(f"Validation samples: {len(valset)}")
 
-    # Load DeepLabV3+ with ConvNeXt-Tiny encoder
+    # Load DeepLabV3+ with efficientnet-b4 backbone
     model = smp.DeepLabV3Plus(
         encoder_name="efficientnet-b4",
         encoder_weights="imagenet",
