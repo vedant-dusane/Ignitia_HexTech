@@ -6,14 +6,14 @@ organiser_files/
 # =========================
 # Ignore datasets
 # =========================
-Project/Offroad_Segmentation_testImages/
-Project/Offroad_Segmentation_Training_Dataset/
+Offroad_Segmentation_testImages/
+Offroad_Segmentation_Training_Dataset/
 
 # =========================
 # Ignore result outputs
 # =========================
-Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/result/test_prediction/
-Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/result/visualizations/
+Offroad_Segmentation_Scripts/result/test_prediction/
+Offroad_Segmentation_Scripts/result/visualizations/
 
 # =========================
 # (Optional) Common Python ignores
