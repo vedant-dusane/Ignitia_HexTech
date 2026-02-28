@@ -8,18 +8,18 @@ Team Members:
 
 1. Project Overview
 	This project presents a semantic segmentation framework for offroad desert terrain, developed for the Ignitia Hackathon.
-	Our solution is centered around:	
-	DeepLabV3+ with EfficientNet‑B4 as the encoder backbone
-		The primary architectural emphasis of this project is the integration of EfficientNet‑B4 to enhance feature extraction quality while maintaining parameter efficiency. The objective was to achieve stable convergence, strong generalization, and competitive Intersection over Union (IoU) performance within constrained training time.
-		The pipeline is modular, reproducible, and structured for clean experimentation.
+	
+	Our solution is centered around:DeepLabV3+ with EfficientNet‑B4 as the encoder backbone.
+	
+	The primary architectural emphasis of this project is the integration of EfficientNet‑B4 to enhance feature extraction quality while maintaining parameter efficiency. The objective was to achieve stable convergence, strong generalization, and competitive Intersection over Union (IoU) performance within constrained training time.The pipeline is modular, reproducible, and structured for clean experimentation.
 
-2. Dataset Acquisition
+3. Dataset Acquisition
 	The official dataset can be downloaded from: https://falcon.duality.ai/secure/documentation/hackathon-segmentation-desert?utm_source=hackathon&utm_medium=instructions&utm_campaign=Ignitia
 	After downloading:
 		Extract the Training Dataset
 		Extract the Testing Dataset
 
-3. Required Directory Structure
+4. Required Directory Structure
 		After extraction, the directory must be structured as follows:
 
 		IGNITIA_HEXTECH
