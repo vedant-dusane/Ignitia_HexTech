@@ -18,42 +18,42 @@ After downloading:
  2.Extract the Testing Dataset
 Required Directory Structure After extraction, the directory must be structured as follows:
 
-	 IGNITIA_HEXTECH
-	 		│
-	 		├── organiser_files/
-	 		│
-	 		├── Project
-	 		│   ├── Offroad_Segmentation_Scripts
-	 		│   │   ├── DeepLabV3Plus
-	 		│   │   │   ├── models
-	 		│   │   │   ├── result
-	 		│   │   │   │   ├── test_prediction
-	 		│   │   │   │   ├── train_stats
-	 		│   │   │   │   ├── visualizations
-	 		│   │   │   ├── scripts
-	 		│   │   │   │   ├── train_deeplab.py
-	 		│   │   │   │   ├── test_deeplab.py
-	 		│   │   │   │   ├── visualize.py
-	 		│   │
-	 		│   ├── Offroad_Segmentation_testImages
-	 		│   │   ├── Color_Images
-	 		│   │   ├── Segmentation
-	 		│   │
-	 		│   ├── Offroad_Segmentation_Training_Dataset
-	 		│       ├── train
-	 		│       │   ├── Color_Images
-	 		│       │   ├── Segmentation
-	 		│       ├── val
-	 		│           ├── Color_Images
-	 		│           ├── Segmentation
-	 		│
-	 		├── README.md
-	 		├── .gitignore
+	IGNITIA_HEXTECH/
+	│
+	├── Offroad_Segmentation_Scripts/
+	│   ├── models/
+	│   │   └── segmentation_head.pth
+	│   │
+	│   ├── result/
+	│   │   ├── test_prediction/
+	│   │   ├── train_stats/
+	│   │   └── visualizations/
+	│   │
+	│   └── scripts/
+	│       ├── test_deeplab.py
+	│       ├── train_deeplab.py
+	│       └── visualize.py
+	│
+	├── Offroad_Segmentation_testImages/
+	│   ├── Color_Images/
+	│   └── Segmentation/
+	│
+	├── Offroad_Segmentation_Training_Dataset/
+	│   ├── train/
+	│   │   ├── Color_Images/
+	│   │   └── Segmentation/
+	│   │
+	│   └── val/
+	│       ├── Color_Images/
+	│       └── Segmentation/
+	│
+	├── organiser_files/
+	└── .gitignore
 The dataset directories must be placed alongside Offroad_Segmentation_Scripts inside the Project folder. Incorrect placement will prevent the EfficientNet‑B4 training pipeline from locating the data.
 
 Training Procedure
 
-Navigate to: Project/Offroad_Segmentation_Scripts/DeepLabV3Plus/scripts
+Navigate to: /Offroad_Segmentation_Scripts/scripts
 
 Run: python train_deeplab.py
 
